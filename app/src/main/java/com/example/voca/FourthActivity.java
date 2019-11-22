@@ -5,16 +5,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ThirdActivity extends Activity {
+public class FourthActivity extends Activity {
+
+    Button backbtn3;
+    Button d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vocalist);
+        setContentView(R.layout.vocatest);
 
-        Button backbtn2 = (Button) findViewById(R.id.backbtn2);
+        Button backbtn3 = (Button) findViewById(R.id.backbtn3);
 
-        backbtn2.setOnClickListener(new View.OnClickListener() {
+        backbtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();

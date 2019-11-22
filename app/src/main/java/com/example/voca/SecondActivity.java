@@ -7,9 +7,6 @@ import android.widget.Button;
 
 public class SecondActivity extends Activity {
 
-    Button backbtn;
-    Button d;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

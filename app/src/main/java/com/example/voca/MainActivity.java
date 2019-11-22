@@ -11,12 +11,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button vocaAdd;
-    Button vocaList;
-    Button adf;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button vocaAdd = (Button) findViewById(R.id.VocaAdd);
         Button vocaList = (Button) findViewById(R.id.VocaFind);
+        Button vocaTest = (Button) findViewById(R.id.VocaTest);
 
         vocaAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        vocaTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FourthActivity.class);
                 startActivity(intent);
             }
         });
