@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class FourthActivity extends Activity {
+public class VocaTestActivity extends Activity {
 
     Button backbtn3;
     Button d;

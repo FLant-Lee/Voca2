@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class SecondActivity extends Activity {
+public class VocaAddActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -17,9 +17,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SecondActivity" android:label="Second 액티비티"></activity>
-        <activity android:name=".ThirdActivity" android:label="Third 액티비티"></activity>
-        <activity android:name=".FourthActivity" android:label="Fourth 액티비티"></activity>
+        <activity android:name=".VocaAddActivity" android:label="Second 액티비티"></activity>
+        <activity android:name=".VocaListActivity" android:label="Third 액티비티"></activity>
+        <activity android:name=".VocaTestActivity" android:label="Fourth 액티비티"></activity>
+        <activity android:name=".ResultActivity" android:label="Result 액티비티"></activity>
 
     </application>
 

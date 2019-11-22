@@ -6,9 +6,6 @@ import android.widget.*;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.*;
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -19,11 +16,12 @@ public class MainActivity extends AppCompatActivity {
         Button vocaAdd = (Button) findViewById(R.id.VocaAdd);
         Button vocaList = (Button) findViewById(R.id.VocaFind);
         Button vocaTest = (Button) findViewById(R.id.VocaTest);
+        Button vocaResult = (Button) findViewById(R.id.TestResult);
 
         vocaAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                Intent intent = new Intent(getApplicationContext(), VocaAddActivity.class);
                 startActivity(intent);
             }
         });
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         vocaList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
+                Intent intent = new Intent(getApplicationContext(), VocaListActivity.class);
                 startActivity(intent);
             }
         });
@@ -40,7 +38,16 @@ public class MainActivity extends AppCompatActivity {
         vocaTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), FourthActivity.class);
+                Intent intent = new Intent(getApplicationContext(), VocaTestActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        vocaResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
                 startActivity(intent);
             }
         });
