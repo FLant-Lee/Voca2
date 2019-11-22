@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     Button vocaAdd;
+    Button vocaList;
     Button adf;
 
 
@@ -22,10 +23,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button vocaAdd = (Button) findViewById(R.id.VocaAdd);
+        Button vocaList = (Button) findViewById(R.id.VocaFind);
+
         vocaAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        vocaList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
                 startActivity(intent);
             }
         });
