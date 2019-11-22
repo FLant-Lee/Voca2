@@ -1,131 +1,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical"
-              android:background="@drawable/background"
->
-
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-    >
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-        >
-            <TextView
-                    android:id="@+id/tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-            />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-    >
-
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-        >
-            <EditText
-                    android:id="@+id/etAddEng"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="영어단어"
-            />
-
-            <EditText
-                    android:id="@+id/etAddKor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="단어 뜻"
-            />
-
-            <Button
-                    android:id="@+id/btnAdd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="단어 추가하기"
-            />
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-        >
-
-            <EditText
-                    android:id="@+id/etUpdateNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="업데이트할 번호"
-            />
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:gravity="center"
+    android:orientation="vertical">
 
 
-            <EditText
-                    android:id="@+id/etUpdateEng"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="영어단어"
-            />
+    <Button
+        android:id="@+id/VocaAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:background="#00000"
+        android:text="단어장 추가"></Button>
 
-            <EditText
-                    android:id="@+id/etUpdateKor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="단어 뜻"
-            />
+    <Button
+        android:id="@+id/VocaFind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:background="#00000"
+        android:text="단어장 보기"></Button>
 
-            <Button
-                    android:id="@+id/btnUpdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="단어 업데이트"
-            />
+    <Button
+        android:id="@+id/VocaTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:background="#00000"
+        android:text="단어 시험"></Button>
 
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-        >
-
-            <EditText
-                    android:id="@+id/etDeleteNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="삭제할 번호"
-            />
-
-            <Button
-                    android:id="@+id/btnDelete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="단어 삭제"
-            />
-
-            <Button
-                    android:id="@+id/btnAllRemove"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="전체 삭제(tv와 collection을)"
-            />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/TestResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:background="#00000"
+        android:text="시험 결과"></Button>
 
 
 </LinearLayout>
