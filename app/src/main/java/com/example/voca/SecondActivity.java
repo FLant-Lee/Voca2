@@ -8,7 +8,7 @@ import android.widget.Button;
 public class SecondActivity extends Activity {
 
     Button backbtn;
-    Button adf;
+    Button d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
