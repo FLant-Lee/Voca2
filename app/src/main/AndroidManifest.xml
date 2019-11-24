@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.voca">
+
 
     <application
             android:allowBackup="true"
@@ -23,5 +25,6 @@
         <activity android:name=".ResultActivity" android:label="Result 액티비티"></activity>
 
     </application>
+
 
 </manifest>

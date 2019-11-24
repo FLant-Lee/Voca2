@@ -3,14 +3,94 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:background="@drawable/background"
-              android:gravity="center"
               android:orientation="vertical"
 >
+    <!--              android:gravity="center"-->
+    <!--              android:orientation="horizontal"-->
 
-    <Button android:layout_width="wrap_content"
+
+    <!--    <EditText-->
+    <!--            android:id="@+id/etAddEng"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:hint="단어 입력"-->
+    <!--    ></EditText>-->
+
+    <!--    <EditText-->
+    <!--            android:id="@+id/etAddKor"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:hint="뜻 입력"-->
+    <!--    ></EditText>-->
+
+    <!--    <Button-->
+    <!--            android:id="@+id/btnAdd"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:text="추가"-->
+    <!--    ></Button>-->
+
+    <!--    <Button-->
+    <!--            android:id="@+id/btnSearch"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:text="네이버 검색 버튼"-->
+    <!--    ></Button>-->
+
+    <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="돌아가기"
             android:id="@+id/backbtn"
     ></Button>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+    >
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+        >
+            <EditText
+                    android:id="@+id/etAddEng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="영어단어"
+            />
+
+            <EditText
+                    android:id="@+id/etAddKor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="단어 뜻"
+            />
+
+            <Button
+                    android:id="@+id/btnAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="단어 추가하기"
+            />
+
+            <Button
+                    android:id="@+id/btnSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="단어 검색하기"
+            />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>

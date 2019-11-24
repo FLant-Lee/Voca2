@@ -13,6 +13,7 @@
             android:background="@drawable/log"
     ></ImageButton>
 
+
     <Button
             android:id="@+id/VocaAdd"
             android:layout_width="wrap_content"
@@ -70,5 +71,6 @@
             android:layout_height="wrap_content"
             android:text="컴퓨터 공학부 201558118 이현우"
             android:textSize="25dp"></TextView>
+
 
 </LinearLayout>
