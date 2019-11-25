@@ -6,7 +6,12 @@ import android.widget.*;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.*;
+
 public class MainActivity extends AppCompatActivity {
+
+    public View vocalist;
+    public TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +22,20 @@ public class MainActivity extends AppCompatActivity {
         Button vocaList = (Button) findViewById(R.id.VocaFind);
         Button vocaTest = (Button) findViewById(R.id.VocaTest);
         Button vocaResult = (Button) findViewById(R.id.TestResult);
+//
+//        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+//
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                VocaAddActivity.vocaNum = position;
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
         vocaAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), VocaListActivity.class);
                 startActivity(intent);
+
             }
         });
 
@@ -51,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
-
-
 }
