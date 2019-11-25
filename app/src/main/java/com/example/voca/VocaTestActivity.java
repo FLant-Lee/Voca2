@@ -14,13 +14,13 @@ public class VocaTestActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vocatest);
 
-        Button backbtn3 = (Button) findViewById(R.id.backbtn3);
-
-        backbtn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        Button backbtn3 = (Button) findViewById(R.id.backbtn3);
+//
+//        backbtn3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+         }
     }
-}
