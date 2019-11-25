@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,16 +19,28 @@ import java.util.ArrayList;
 public class VocaAddActivity extends Activity {
 
 
-    View vocalist;
-
     static ArrayList<Voca> vocaArr = new ArrayList<>();
     static boolean is_through = false;
 
+    private WebView webView;
+    private String url = "https://m.naver.com";
 
-    Button btnAdd;
+    View vocalist;
+
+    Button btnAdd , btnSearch;
     EditText etAddEng, etAddKor;
 
     TextView tv;
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
+            webView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +48,17 @@ public class VocaAddActivity extends Activity {
         setContentView(R.layout.vocaadd);
 
         Button backbtn = (Button) findViewById(R.id.backbtn);
+        vocalist = getLayoutInflater().inflate(R.layout.vocalist, null, false);
+        tv = (TextView) vocalist.findViewById(R.id.tv);
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+        etAddEng = (EditText) findViewById(R.id.etAddEng);
+        etAddKor = (EditText) findViewById(R.id.etAddKor);
+
+        webView = (WebView) findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl(url);
+        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebViewClient(new WebViewClientClass());
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,20 +67,8 @@ public class VocaAddActivity extends Activity {
             }
         });
 
-        vocalist = getLayoutInflater().inflate(R.layout.vocalist, null, false);
-        tv = (TextView) vocalist.findViewById(R.id.tv);
 
 
-        btnAdd = (Button) findViewById(R.id.btnAdd);
-
-        etAddEng = (EditText) findViewById(R.id.etAddEng);
-        etAddKor = (EditText) findViewById(R.id.etAddKor);
-
-
-        /////////////////////////////////////////////////////////////////////////
-//        load(); //voca.txt - default값 읽어오기
-//        showVoca();
-        /////////////////////////////////////////////////////////////////////////
 
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +146,14 @@ public class VocaAddActivity extends Activity {
     private void showVoca() {
         for (int i = 0; i < vocaArr.size(); i++) {
             tv.append((i + 1) + ". " + vocaArr.get(i).eng + "  : " + vocaArr.get(i).kor + "\n");
+        }
+    }
+
+    private class WebViewClientClass extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
         }
     }
 }
