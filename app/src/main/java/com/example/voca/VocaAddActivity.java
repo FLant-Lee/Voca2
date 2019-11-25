@@ -27,7 +27,7 @@ public class VocaAddActivity extends Activity {
 
     View vocalist;
 
-    Button btnAdd , btnSearch;
+    Button btnAdd, btnSearch;
     EditText etAddEng, etAddKor;
 
     TextView tv;
@@ -66,9 +66,6 @@ public class VocaAddActivity extends Activity {
                 finish();
             }
         });
-
-
-
 
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
