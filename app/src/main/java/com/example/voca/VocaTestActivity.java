@@ -8,7 +8,6 @@ import android.widget.Button;
 public class VocaTestActivity extends Activity {
 
     Button backbtn3;
-    Button d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
