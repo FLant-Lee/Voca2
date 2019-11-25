@@ -22,8 +22,8 @@ public class VocaAddActivity extends Activity {
     static ArrayList<Voca> vocaArr = new ArrayList<>();
     static boolean is_through = false;
 
-    private WebView webView;
-    private String url = "https://m.naver.com";
+//    private WebView webView;
+//    private String url = "https://m.naver.com";
 
     View vocalist;
 
@@ -33,14 +33,14 @@ public class VocaAddActivity extends Activity {
     TextView tv;
 
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
-            webView.goBack();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
+//            webView.goBack();
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +54,11 @@ public class VocaAddActivity extends Activity {
         etAddEng = (EditText) findViewById(R.id.etAddEng);
         etAddKor = (EditText) findViewById(R.id.etAddKor);
 
-        webView = (WebView) findViewById(R.id.webView);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(url);
-        webView.setWebChromeClient(new WebChromeClient());
-        webView.setWebViewClient(new WebViewClientClass());
+//        webView = (WebView) findViewById(R.id.webView);
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.loadUrl(url);
+//        webView.setWebChromeClient(new WebChromeClient());
+//        webView.setWebViewClient(new WebViewClientClass());
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,11 +149,11 @@ public class VocaAddActivity extends Activity {
         }
     }
 
-    private class WebViewClientClass extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
-        }
-    }
+//    private class WebViewClientClass extends WebViewClient {
+//        @Override
+//        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//            view.loadUrl(url);
+//            return true;
+//        }
+//    }
 }

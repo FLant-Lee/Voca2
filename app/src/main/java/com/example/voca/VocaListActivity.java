@@ -45,6 +45,7 @@ public class VocaListActivity extends Activity {
             load();
             is_through = true;
         }
+        tv.setText("");
         showVoca();
 
         Button backbtn2 = (Button) findViewById(R.id.backbtn2);

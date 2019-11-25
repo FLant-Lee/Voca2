@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), VocaListActivity.class);
                 startActivity(intent);
-//                vocalist = getLayoutInflater().inflate(R.layout.vocalist, null, false);
-//                tv = (TextView) vocalist.findViewById(R.id.tv);
 
             }
         });
