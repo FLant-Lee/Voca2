@@ -6,11 +6,28 @@
               android:gravity="center"
               android:orientation="vertical"
 >
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+        >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시험 결과"
+                    android:textSize="30dp"
+            >
+            </TextView>
+            <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"/>
+        </TableRow>
 
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="돌아가기4"
-            android:id="@+id/backbtn4"
-    ></Button>
 
+    </TableLayout>
 </LinearLayout>
