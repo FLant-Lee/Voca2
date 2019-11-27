@@ -18,12 +18,11 @@ import java.util.ArrayList;
 
 public class VocaAddActivity extends Activity {
 
+    private WebView mwv;//Mobile Web View
 
     static ArrayList<Voca> vocaArr = new ArrayList<>();
     static boolean is_through = false;
 
-//    private WebView webView;
-//    private String url = "https://m.naver.com";
 
     View vocalist;
 
@@ -31,16 +30,6 @@ public class VocaAddActivity extends Activity {
     EditText etAddEng, etAddKor;
 
     TextView tv;
-
-
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
-//            webView.goBack();
-//            return true;
-//        }
-//        return super.onKeyDown(keyCode, event);
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +43,22 @@ public class VocaAddActivity extends Activity {
         etAddEng = (EditText) findViewById(R.id.etAddEng);
         etAddKor = (EditText) findViewById(R.id.etAddKor);
 
-//        webView = (WebView) findViewById(R.id.webView);
-//        webView.getSettings().setJavaScriptEnabled(true);
-//        webView.loadUrl(url);
-//        webView.setWebChromeClient(new WebChromeClient());
-//        webView.setWebViewClient(new WebViewClientClass());
+        mwv = (WebView) findViewById(R.id.webView);
+        btnSearch = (Button) findViewById(R.id.btnSearch);
+
+        WebSettings mws = mwv.getSettings();//Mobile Web Setting
+        mws.setJavaScriptEnabled(true);//자바스크립트 허용
+        mws.setLoadWithOverviewMode(true);//컨텐츠가 웹뷰보다 클 경우 스크린 크기에 맞게 조정
+        mws.setDomStorageEnabled(true);
+
+        mwv.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
+
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +66,6 @@ public class VocaAddActivity extends Activity {
                 finish();
             }
         });
-
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
 
@@ -95,7 +94,13 @@ public class VocaAddActivity extends Activity {
             }
         });
 
-
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mwv.setVisibility(View.VISIBLE);
+                mwv.loadUrl(goUrl(etAddEng.getText().toString()));
+            }
+        });
     }
 
     public void load() {
@@ -146,11 +151,9 @@ public class VocaAddActivity extends Activity {
         }
     }
 
-//    private class WebViewClientClass extends WebViewClient {
-//        @Override
-//        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//            view.loadUrl(url);
-//            return true;
-//        }
-//    }
+    public String goUrl(String url) {
+
+        return "https://m.search.naver.com/search.naver?query=" + url + "&where=m_ldic&sm=msv_hty";
+    }
+
 }

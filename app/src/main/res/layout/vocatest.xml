@@ -17,14 +17,14 @@
                 android:gravity="center"
                 android:layout_margin="5dp"
         >
-            <Chronometer
+
+            <TextView
                     android:id="@+id/Timeset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:format="경과 시간 : %s"
                     android:textSize="30dp"
                     android:gravity="center"
-            ></Chronometer>
+            ></TextView>
         </TableRow>
 
         <TableRow
@@ -39,6 +39,7 @@
                     android:layout_width="300dp"
             >
                 <TextView
+                        android:id="@+id/tvEng"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:text="단어 출력"
@@ -62,6 +63,7 @@
                     android:gravity="center"
             >
                 <EditText
+                        android:id="@+id/etKor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -69,20 +71,20 @@
                 >
                 </EditText>
                 <Button
+                        android:id="@+id/submitBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="제출"
-
                 ></Button>
             </LinearLayout>
         </TableRow>
     </TableLayout>
 
 
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="돌아가기3"
-                android:id="@+id/backbtn3"
-        ></Button>
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="돌아가기3"
+            android:id="@+id/backbtn3"
+    ></Button>
 
 </LinearLayout>

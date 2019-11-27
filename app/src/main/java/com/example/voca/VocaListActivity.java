@@ -76,6 +76,7 @@ public class VocaListActivity extends Activity {
                 vocaArr.clear();
             }
         });
+
         btnDelete.setOnClickListener(new View.OnClickListener() {
 
             @Override
