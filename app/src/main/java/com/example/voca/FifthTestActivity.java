@@ -20,7 +20,7 @@ import java.util.Random;
 import static com.example.voca.VocaAddActivity.is_through;
 import static com.example.voca.VocaAddActivity.vocaArr;
 
-public class SecondTestActivity extends Activity {
+public class FifthTestActivity extends Activity {
 
     Button backbtn3, submitBtn;
     TextView Timeset, tvEng;
@@ -105,7 +105,7 @@ public class SecondTestActivity extends Activity {
             }
 
             public void onFinish() {
-                Intent intent = new Intent(getApplicationContext(), ThirdTestActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "다음으로", Toast.LENGTH_SHORT).show();

@@ -152,7 +152,6 @@ public class VocaAddActivity extends Activity {
     }
 
     public String goUrl(String url) {
-
         return "https://m.search.naver.com/search.naver?query=" + url + "&where=m_ldic&sm=msv_hty";
     }
 

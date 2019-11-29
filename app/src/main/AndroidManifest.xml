@@ -26,6 +26,9 @@
         <activity android:name=".VocaTestActivity" android:label="Fourth 액티비티"></activity>
         <activity android:name=".ResultActivity" android:label="Result 액티비티"></activity>
         <activity android:name=".SecondTestActivity" android:label="Second Test 액티비티"></activity>
+        <activity android:name=".ThirdTestActivity" android:label="Third Test 액티비티"></activity>
+        <activity android:name=".FourthTestActivity" android:label="Fourth Test 액티비티"></activity>
+        <activity android:name=".FifthTestActivity" android:label="Fifth Test 액티비티"></activity>
 
 
     </application>
