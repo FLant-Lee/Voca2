@@ -30,7 +30,6 @@ public class VocaTestActivity extends Activity {
     int num;
     CountDownTimer countDownTimer;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
