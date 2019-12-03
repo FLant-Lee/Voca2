@@ -108,6 +108,8 @@ public class SecondTestActivity extends Activity {
                 Intent intent = new Intent(getApplicationContext(), ThirdTestActivity.class);
                 startActivity(intent);
 
+                overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+
                 Toast.makeText(getApplicationContext(), "다음으로", Toast.LENGTH_SHORT).show();
                 visibilliyWidget("visible");
             }
