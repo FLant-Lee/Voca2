@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class ResultActivity extends Activity {
 
+    ArrayList<Result> resultArr;
     private Spinner spinner2;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
@@ -43,7 +45,7 @@ public class ResultActivity extends Activity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-
+//
 //        public void load () {
 //            try {
 //                BufferedReader br = new BufferedReader(new FileReader(getFilesDir() + "/voca.txt"));
@@ -65,6 +67,23 @@ public class ResultActivity extends Activity {
 //                e.printStackTrace();
 //            } catch (IOException e) {
 //                Toast.makeText(getApplicationContext(), "파일 없음", Toast.LENGTH_SHORT).show();
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        public void save () {
+//            try {
+//                FileWriter fw = new FileWriter(getFilesDir() + "/voca.txt", false);
+//
+//
+//                for (int i = 0; i < vocaArr.size(); i++) {
+//                    Voca temp = vocaArr.get(i);
+//                    fw.write(temp.eng + "," + temp.kor + "\n");
+//                }
+//
+//                fw.close();
+//            } catch (IOException e) {
+//                // TODO Auto-generated catch block
 //                e.printStackTrace();
 //            }
 //        }

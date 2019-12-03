@@ -30,6 +30,8 @@ public class VocaAddActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vocaadd);
 
+        is_through = true;
+
         vocalist = getLayoutInflater().inflate(R.layout.vocalist, null, false);
         tv = (TextView) vocalist.findViewById(R.id.tv);
         btnAdd = (Button) findViewById(R.id.btnAdd);

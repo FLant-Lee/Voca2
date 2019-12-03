@@ -19,12 +19,13 @@ import static com.example.voca.VocaAddActivity.vocaArr;
 
 public class VocaTestActivity extends Activity {
 
+    final static int NUMBER = 5;
+    static int[] randArr = new int[NUMBER];
+    Random rd = new Random();
     Button backbtn3, submitBtn;
     TextView Timeset, tvEng;
     EditText etKor;
-    ImageView correctImg , incorrectImg;
-
-    Random rd;
+    ImageView correctImg, incorrectImg;
     boolean is_right = false;
     int num;
     CountDownTimer countDownTimer;
@@ -50,7 +51,9 @@ public class VocaTestActivity extends Activity {
         //랜덤으로 vocaArr에 있는 Eng를 뿌림
         rd = new Random();
         num = rd.nextInt(VocaAddActivity.vocaArr.size());
-        tvEng.setText((VocaAddActivity.vocaArr.get(num).eng));
+//        numRand();
+        tvEng.setText((VocaAddActivity.vocaArr.get(randArr[0]).eng));
+
 
         backbtn3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +83,7 @@ public class VocaTestActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //맞췄다면
-                if (etKor.getText().toString().equals(VocaAddActivity.vocaArr.get(num).kor)) {
+                if (etKor.getText().toString().equals(VocaAddActivity.vocaArr.get(randArr[0]).kor)) {
                     is_right = true;
                     checkAnswer(4);
                     countDownTimer.cancel();
@@ -96,12 +99,13 @@ public class VocaTestActivity extends Activity {
 
     }
 
+
     //시간이 초가 된 경우 or 정답을 맞춘 경우
     public void checkAnswer(int second) {
 
-        if(is_right == true){
+        if (is_right == true) {
             correctImg.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             incorrectImg.setVisibility(View.VISIBLE);
         }
         countDownTimer.cancel();
@@ -122,6 +126,23 @@ public class VocaTestActivity extends Activity {
             }
         }.start();
 
+    }
+
+
+//    //랜덤으로 vocaArr에 있는 Eng를 뿌림
+//    rd = new Random();
+//    rd.nextInt(VocaAddActivity.vocaArr.size());
+//        tvEng.setText((VocaAddActivity.vocaArr.get(num).eng));
+
+    public void numRand() {
+        for (int i = 0; i < NUMBER; i++) {
+            randArr[i] = rd.nextInt(VocaAddActivity.vocaArr.size());
+            for (int j = 0; j < i; j++) {
+                if (randArr[i] == randArr[j]) {
+                    i--;
+                }
+            }
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -151,11 +172,11 @@ public class VocaTestActivity extends Activity {
         }
     }
 
-    public void visibilliyWidget(String flag){
-        if(flag.equals("visible")){
+    public void visibilliyWidget(String flag) {
+        if (flag.equals("visible")) {
             etKor.setVisibility(View.VISIBLE);
             submitBtn.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             etKor.setVisibility(View.INVISIBLE);
             submitBtn.setVisibility(View.INVISIBLE);
         }
