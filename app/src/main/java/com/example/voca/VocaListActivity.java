@@ -48,14 +48,6 @@ public class VocaListActivity extends Activity {
         tv.setText("");
         showVoca();
 
-        Button backbtn2 = (Button) findViewById(R.id.backbtn2);
-
-        backbtn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
 
         btnAllRemove.setOnClickListener(new View.OnClickListener() {

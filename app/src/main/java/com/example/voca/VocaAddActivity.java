@@ -30,7 +30,6 @@ public class VocaAddActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vocaadd);
 
-        Button backbtn = (Button) findViewById(R.id.backbtn);
         vocalist = getLayoutInflater().inflate(R.layout.vocalist, null, false);
         tv = (TextView) vocalist.findViewById(R.id.tv);
         btnAdd = (Button) findViewById(R.id.btnAdd);
@@ -50,14 +49,6 @@ public class VocaAddActivity extends Activity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
-            }
-        });
-
-
-        backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
 

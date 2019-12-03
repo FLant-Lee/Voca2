@@ -2,7 +2,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="@drawable/background"
+              android:background="@drawable/background3"
               android:gravity="center"
               android:orientation="vertical"
 >
@@ -25,6 +25,7 @@
                     android:textSize="30dp"
                     android:gravity="center"
             ></TextView>
+
         </TableRow>
 
         <TableRow
@@ -34,9 +35,9 @@
                 android:layout_margin="40dp"
         >
             <FrameLayout
-                    android:background="#000000"
                     android:layout_height="400dp"
                     android:layout_width="300dp"
+                    android:background="@drawable/card"
             >
                 <TextView
                         android:id="@+id/tvEng"
@@ -44,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:text="단어 출력"
                         android:layout_gravity="center"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#000000"
                         android:textSize="30dp"
                 >
                 </TextView>
@@ -64,17 +65,21 @@
             >
                 <EditText
                         android:id="@+id/etKor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_weight="2"
                         android:hint="답 입력"
+                        android:gravity="center"
+                        android:background="@drawable/card"
                 >
                 </EditText>
                 <Button
                         android:id="@+id/submitBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="10dp"
+                        android:layout_height="30dp"
                         android:text="제출"
+                        android:background="@drawable/button"
+                        android:layout_weight="1"
                 ></Button>
 
             </LinearLayout>
