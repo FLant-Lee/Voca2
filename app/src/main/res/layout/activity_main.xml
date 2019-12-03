@@ -14,49 +14,49 @@
     ></ImageButton>
 
 
-    <Button
+    <ImgaeButton
+            android:background="@drawable/button"
             android:id="@+id/VocaAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="#000000"
             android:text="단어장 추가"
             android:textColor="#ffffff"
-            android:textSize="25dp"></Button>
+            android:textSize="25dp"></ImgaeButton>
 
-    <Button
+    <ImgaeButton
+            android:background="@drawable/button"
             android:id="@+id/VocaFind"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="#000000"
             android:text="단어장 보기"
             android:textColor="#ffffff"
-            android:textSize="25dp"></Button>
+            android:textSize="25dp"></ImgaeButton>
 
-    <Button
+    <ImageButton
+            android:background="@drawable/button"
             android:id="@+id/VocaTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="#000000"
             android:text="단어 시험"
             android:textColor="#ffffff"
-            android:textSize="25dp"></Button>
+            android:textSize="25dp"></ImageButton>
 
-    <Button
+    <ImageButton
+            android:background="@drawable/button"
             android:id="@+id/TestResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="#000000"
             android:text="시험 결과"
             android:textColor="#ffffff"
-            android:textSize="25dp"></Button>
+            android:textSize="25dp"></ImageButton>
 
 
     <TextView

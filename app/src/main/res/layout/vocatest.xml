@@ -76,7 +76,35 @@
                         android:layout_height="wrap_content"
                         android:text="제출"
                 ></Button>
+
             </LinearLayout>
+
+
+        </TableRow>
+
+        <TableRow
+
+                android:gravity="center"
+        >
+
+            <FrameLayout
+                    android:layout_gravity="center"
+            >
+                <ImageView
+                        android:id="@+id/correct"
+                        android:visibility="invisible"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/correct"
+                />
+                <ImageView
+                        android:id="@+id/incorrect"
+                        android:visibility="invisible"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/incorrect"
+                />
+            </FrameLayout>
         </TableRow>
     </TableLayout>
 

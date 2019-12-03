@@ -16,14 +16,13 @@ public class VocaAddActivity extends Activity {
     private WebView mwv;//Mobile Web View
 
     static ArrayList<Voca> vocaArr = new ArrayList<>();
+
     static boolean is_through = false;
 
 
     View vocalist;
-
     Button btnAdd, btnSearch;
     EditText etAddEng, etAddKor;
-
     TextView tv;
 
     @Override

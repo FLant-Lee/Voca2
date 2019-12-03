@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+
     public View vocalist;
     public TextView tv;
 
@@ -17,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button vocaAdd = (Button) findViewById(R.id.VocaAdd);
-        Button vocaList = (Button) findViewById(R.id.VocaFind);
-        Button vocaTest = (Button) findViewById(R.id.VocaTest);
-        Button vocaResult = (Button) findViewById(R.id.TestResult);
+        ImageButton vocaAdd = (ImageButton) findViewById(R.id.VocaAdd);
+        ImageButton vocaList = (ImageButton) findViewById(R.id.VocaFind);
+        ImageButton vocaTest = (ImageButton) findViewById(R.id.VocaTest);
+        ImageButton vocaResult = (ImageButton) findViewById(R.id.TestResult);
 //
 //        Spinner spinner = (Spinner) findViewById(R.id.spinner);
 //
