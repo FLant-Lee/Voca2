@@ -2,6 +2,7 @@ package com.example.voca;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -100,8 +101,13 @@ public class FourthTestActivity extends Activity {
     //시간이 초가 된 경우 or 정답을 맞춘 경우
     public void checkAnswer(int second) {
         if (is_right == true) {
+            MediaPlayer player = MediaPlayer.create(this,R.raw.correct);
+            player.start();
             correctImg.setVisibility(View.VISIBLE);
+
         } else {
+            MediaPlayer player = MediaPlayer.create(this,R.raw.incorrect);
+            player.start();
             incorrectImg.setVisibility(View.VISIBLE);
         }
         countDownTimer.cancel();

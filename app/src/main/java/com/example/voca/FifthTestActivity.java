@@ -2,6 +2,7 @@ package com.example.voca;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -64,7 +65,6 @@ public class FifthTestActivity extends Activity {
         //남은 시간 : OO초
         countDownTimer = new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
-                tvEng.setText((VocaAddActivity.vocaArr.get(VocaTestActivity.randArr[4]).kor));
                 Timeset.setText(String.format(Locale.getDefault(), "남은 시간 : %d초", millisUntilFinished / 1000L));
             }
 
@@ -101,13 +101,19 @@ public class FifthTestActivity extends Activity {
     //시간이 초가 된 경우 or 정답을 맞춘 경우
     public void checkAnswer(int second) {
         if (is_right == true) {
+            MediaPlayer player = MediaPlayer.create(this,R.raw.correct);
+            player.start();
             correctImg.setVisibility(View.VISIBLE);
+
         } else {
+            MediaPlayer player = MediaPlayer.create(this,R.raw.incorrect);
+            player.start();
             incorrectImg.setVisibility(View.VISIBLE);
         }
         countDownTimer.cancel();
         CountDownTimer countDownTimer2 = new CountDownTimer(second * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
+                tvEng.setText((VocaAddActivity.vocaArr.get(VocaTestActivity.randArr[4]).kor));
                 Timeset.setText(String.format(Locale.getDefault(), "다음으로 넘어가기 %d초 전", millisUntilFinished / 1000L));
             }
 

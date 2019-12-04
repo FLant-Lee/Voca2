@@ -2,6 +2,7 @@ package com.example.voca;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -97,6 +98,7 @@ public class VocaTestActivity extends Activity {
                     countDownTimer.cancel();
                     Toast.makeText(getApplicationContext(), "정답입니다.", Toast.LENGTH_SHORT).show();
                     visibilliyWidget("invisible");
+
                 }
                 //틀렸다면
                 else {
@@ -112,8 +114,13 @@ public class VocaTestActivity extends Activity {
     public void checkAnswer(int second) {
 
         if (is_right == true) {
+            MediaPlayer player = MediaPlayer.create(this,R.raw.correct);
+            player.start();
             correctImg.setVisibility(View.VISIBLE);
+
         } else {
+            MediaPlayer player = MediaPlayer.create(this,R.raw.incorrect);
+            player.start();
             incorrectImg.setVisibility(View.VISIBLE);
         }
         countDownTimer.cancel();
