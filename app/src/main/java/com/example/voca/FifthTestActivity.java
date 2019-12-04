@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -24,6 +21,8 @@ public class FifthTestActivity extends Activity {
 
     Button backbtn3, submitBtn;
     TextView Timeset, tvEng;
+    ImageView correctImg, incorrectImg;
+
     EditText etKor;
     Random rd;
     boolean is_right = false;
@@ -41,6 +40,8 @@ public class FifthTestActivity extends Activity {
         tvEng = (TextView) findViewById(R.id.tvEng);
         etKor = (EditText) findViewById(R.id.etKor);
         Timeset = (TextView) findViewById(R.id.Timeset);
+        correctImg = (ImageView) findViewById(R.id.correct);
+        incorrectImg = (ImageView) findViewById(R.id.incorrect);
 
         if (!is_through == true) {
             load();                         //load를 먼저 해야 vocaArr에 담김
@@ -63,6 +64,7 @@ public class FifthTestActivity extends Activity {
         //남은 시간 : OO초
         countDownTimer = new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
+                tvEng.setText((VocaAddActivity.vocaArr.get(VocaTestActivity.randArr[4]).kor));
                 Timeset.setText(String.format(Locale.getDefault(), "남은 시간 : %d초", millisUntilFinished / 1000L));
             }
 
@@ -98,6 +100,11 @@ public class FifthTestActivity extends Activity {
 
     //시간이 초가 된 경우 or 정답을 맞춘 경우
     public void checkAnswer(int second) {
+        if (is_right == true) {
+            correctImg.setVisibility(View.VISIBLE);
+        } else {
+            incorrectImg.setVisibility(View.VISIBLE);
+        }
         countDownTimer.cancel();
         CountDownTimer countDownTimer2 = new CountDownTimer(second * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -112,6 +119,8 @@ public class FifthTestActivity extends Activity {
 
                 Toast.makeText(getApplicationContext(), "다음으로", Toast.LENGTH_SHORT).show();
                 visibilliyWidget("visible");
+                correctImg.setVisibility(View.INVISIBLE);
+                incorrectImg.setVisibility(View.INVISIBLE);
             }
         }.start();
 

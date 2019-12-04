@@ -119,6 +119,7 @@ public class VocaTestActivity extends Activity {
         countDownTimer.cancel();
         CountDownTimer countDownTimer2 = new CountDownTimer(second * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
+                tvEng.setText((VocaAddActivity.vocaArr.get(randArr[0]).kor));
                 Timeset.setText(String.format(Locale.getDefault(), "다음으로 넘어가기 %d초 전", millisUntilFinished / 1000L));
             }
 
