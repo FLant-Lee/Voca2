@@ -19,7 +19,6 @@ public class VocaAddActivity extends Activity {
 
     static boolean is_through = false;
 
-
     View vocalist;
     Button btnAdd, btnSearch;
     EditText etAddEng, etAddKor;

@@ -50,7 +50,7 @@ public class FifthTestActivity extends Activity {
         //랜덤으로 vocaArr에 있는 Eng를 뿌림
         rd = new Random();
         num = rd.nextInt(VocaAddActivity.vocaArr.size());
-        tvEng.setText((VocaAddActivity.vocaArr.get(num).eng));
+        tvEng.setText((VocaAddActivity.vocaArr.get(VocaTestActivity.randArr[4]).eng));
 
         backbtn3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +80,7 @@ public class FifthTestActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //맞췄다면
-                if (etKor.getText().toString().equals(VocaAddActivity.vocaArr.get(num).kor)) {
+                if (etKor.getText().toString().equals(VocaAddActivity.vocaArr.get(VocaTestActivity.randArr[4]).kor)) {
                     is_right = true;
                     checkAnswer(4);
                     countDownTimer.cancel();

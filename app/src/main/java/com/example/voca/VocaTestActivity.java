@@ -19,7 +19,7 @@ import static com.example.voca.VocaAddActivity.vocaArr;
 
 public class VocaTestActivity extends Activity {
 
-    final static int NUMBER = 5;
+    private final static int NUMBER = 5;
     static int[] randArr = new int[NUMBER];
     Random rd = new Random();
     Button backbtn3, submitBtn;
@@ -49,9 +49,17 @@ public class VocaTestActivity extends Activity {
         }
 
         //랜덤으로 vocaArr에 있는 Eng를 뿌림
+        //중복 불허이니 최소 vocaArr에는 5개가 들어가 있어야함
         rd = new Random();
+        for (int i = 0; i < randArr.length; i++) {
+            randArr[i] = rd.nextInt(VocaAddActivity.vocaArr.size());
+            for(int j = 0; j< i; j++){
+                if(randArr[i] == randArr[j]){
+                    i--;
+                }
+            }
+        }
         num = rd.nextInt(VocaAddActivity.vocaArr.size());
-//        numRand();
         tvEng.setText((VocaAddActivity.vocaArr.get(randArr[0]).eng));
 
 
@@ -118,7 +126,7 @@ public class VocaTestActivity extends Activity {
                 Intent intent = new Intent(getApplicationContext(), SecondTestActivity.class);
                 startActivity(intent);
 
-                overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
                 Toast.makeText(getApplicationContext(), "다음으로", Toast.LENGTH_SHORT).show();
                 visibilliyWidget("visible");
