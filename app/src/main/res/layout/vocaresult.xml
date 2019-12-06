@@ -18,7 +18,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="시험 결과"
-                    android:textSize="30dp"
+                    android:textSize="20dp"
             >
             </TextView>
             <Spinner
@@ -26,6 +26,45 @@
                     android:layout_centerHorizontal="true"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            >
+            </TextView>
+        </TableRow>
+
+
+        <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        >
+            <TextView
+                    android:id="@+id/tvResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            >
+            </TextView>
+        </TableRow>
+
+        <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+        >
+            <Button
+                    android:id="@+id/homeBtn"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:text="홈으로"
+                    android:background="@drawable/button"
+            >
+            </Button>
         </TableRow>
 
     </TableLayout>

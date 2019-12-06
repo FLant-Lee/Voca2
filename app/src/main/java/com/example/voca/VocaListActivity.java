@@ -49,7 +49,6 @@ public class VocaListActivity extends Activity {
         showVoca();
 
 
-
         btnAllRemove.setOnClickListener(new View.OnClickListener() {
             //빈내용으로 txt를 덮어 써버리고
             //컬레션과 텍스트필드를 비워줌
@@ -73,12 +72,17 @@ public class VocaListActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                int tmpIndex = Integer.parseInt(etDelteNum.getText().toString()) - 1;
-                vocaArr.remove(tmpIndex);
-                Toast.makeText(getApplicationContext(), (tmpIndex + 1) + "번 삭제됨", Toast.LENGTH_SHORT).show();
-                tv.setText("");
-                save();
-                showVoca();
+                if (!whatLanguage(etDelteNum.getText().toString()).equals("num")) {
+                    Toast.makeText(getApplicationContext(), "숫자를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                } else {
+                    int tmpIndex = Integer.parseInt(etDelteNum.getText().toString()) - 1;
+                    vocaArr.remove(tmpIndex);
+                    Toast.makeText(getApplicationContext(), (tmpIndex + 1) + "번 삭제됨", Toast.LENGTH_SHORT).show();
+                    tv.setText("");
+                    save();
+                    showVoca();
+                }
+                etDelteNum.setText("");
 
             }
         });
@@ -86,13 +90,30 @@ public class VocaListActivity extends Activity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int tmpIndex = Integer.parseInt(etUpdateNum.getText().toString()) - 1;
-                vocaArr.get(tmpIndex).eng = etUpdateEng.getText().toString();
-                vocaArr.get(tmpIndex).kor = etUpdateKor.getText().toString();
-                Toast.makeText(getApplicationContext(), (tmpIndex + 1) + "번 변경됨", Toast.LENGTH_SHORT).show();
-                tv.setText("");
-                save();
-                showVoca();
+                if (!whatLanguage(etUpdateNum.getText().toString()).equals("num")) {
+                    Toast.makeText(getApplicationContext(), "숫자를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    etUpdateNum.setText("");
+                }
+                if (!whatLanguage(etUpdateEng.getText().toString()).equals("eng")) {
+                    Toast.makeText(getApplicationContext(), "영어를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    etUpdateEng.setText("");
+                }
+                if (!whatLanguage(etUpdateKor.getText().toString()).equals("kor")) {
+                    Toast.makeText(getApplicationContext(), "한글을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    etUpdateKor.setText("");
+                }
+                if (whatLanguage(etUpdateNum.getText().toString()).equals("num") && whatLanguage(etUpdateEng.getText().toString()).equals("eng") && whatLanguage(etUpdateKor.getText().toString()).equals("kor")) {
+                    int tmpIndex = Integer.parseInt(etUpdateNum.getText().toString()) - 1;
+                    vocaArr.get(tmpIndex).eng = etUpdateEng.getText().toString();
+                    vocaArr.get(tmpIndex).kor = etUpdateKor.getText().toString();
+                    Toast.makeText(getApplicationContext(), (tmpIndex + 1) + "번 변경됨", Toast.LENGTH_SHORT).show();
+                    tv.setText("");
+                    save();
+                    showVoca();
+                    etUpdateNum.setText("");
+                    etUpdateEng.setText("");
+                    etUpdateKor.setText("");
+                }
             }
         });
     }
@@ -144,4 +165,16 @@ public class VocaListActivity extends Activity {
             tv.append((i + 1) + ". " + vocaArr.get(i).eng + "  : " + vocaArr.get(i).kor + "\n");
         }
     }
+
+    public String whatLanguage(String str) {
+        if (str.matches("^[가-힣ㄱ-ㅎㅏ-ㅣ]*$")) {
+            return "kor";
+        } else if (str.matches("^[a-z]*$")) {
+            return "eng";
+        } else if (str.matches("^[0-9]]*$")) {
+            return "num";
+        }
+        return "";
+    }
+
 }

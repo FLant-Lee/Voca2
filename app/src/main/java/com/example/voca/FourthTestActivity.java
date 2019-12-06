@@ -44,10 +44,6 @@ public class FourthTestActivity extends Activity {
         correctImg = (ImageView) findViewById(R.id.correct);
         incorrectImg = (ImageView) findViewById(R.id.incorrect);
 
-        if (!is_through == true) {
-            load();                         //load를 먼저 해야 vocaArr에 담김
-            is_through = true;
-        }
 
         //랜덤으로 vocaArr에 있는 Eng를 뿌림
         rd = new Random();
@@ -81,17 +77,23 @@ public class FourthTestActivity extends Activity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //맞췄다면
-                if (etKor.getText().toString().equals(VocaAddActivity.vocaArr.get(VocaTestActivity.randArr[3]).kor)) {
-                    is_right = true;
-                    checkAnswer(4);
-                    countDownTimer.cancel();
-                    Toast.makeText(getApplicationContext(), "정답입니다.", Toast.LENGTH_SHORT).show();
-                    visibilliyWidget("invisible");
+                if (!isKorean(etKor.getText().toString()).equals("kor")) {
+                    Toast.makeText(getApplicationContext(), "한국어를 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
-                //틀렸다면
-                else {
-                    Toast.makeText(getApplicationContext(), "틀렸습니다.", Toast.LENGTH_SHORT).show();
+                if (isKorean(etKor.getText().toString()).equals("kor")) {
+
+                    //맞췄다면
+                    if (etKor.getText().toString().equals(VocaAddActivity.vocaArr.get(VocaTestActivity.randArr[3]).kor)) {
+                        is_right = true;
+                        checkAnswer(4);
+                        countDownTimer.cancel();
+                        Toast.makeText(getApplicationContext(), "정답입니다.", Toast.LENGTH_SHORT).show();
+                        visibilliyWidget("invisible");
+                    }
+                    //틀렸다면
+                    else {
+                        Toast.makeText(getApplicationContext(), "틀렸습니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -101,12 +103,13 @@ public class FourthTestActivity extends Activity {
     //시간이 초가 된 경우 or 정답을 맞춘 경우
     public void checkAnswer(int second) {
         if (is_right == true) {
-            MediaPlayer player = MediaPlayer.create(this,R.raw.correct);
+            MediaPlayer player = MediaPlayer.create(this, R.raw.correct);
             player.start();
             correctImg.setVisibility(View.VISIBLE);
+            VocaTestActivity.correctCnt++;
 
         } else {
-            MediaPlayer player = MediaPlayer.create(this,R.raw.incorrect);
+            MediaPlayer player = MediaPlayer.create(this, R.raw.incorrect);
             player.start();
             incorrectImg.setVisibility(View.VISIBLE);
         }
@@ -122,7 +125,7 @@ public class FourthTestActivity extends Activity {
                 startActivity(intent);
 
 
-                overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
                 Toast.makeText(getApplicationContext(), "다음으로", Toast.LENGTH_SHORT).show();
                 visibilliyWidget("visible");
@@ -135,38 +138,21 @@ public class FourthTestActivity extends Activity {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void load() {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(getFilesDir() + "/voca.txt"));
-            while (true) {
-                String line = br.readLine();
-                if (line == null) {
-                    break;
-                }
-                String[] tempArr = line.split(",");
-                Voca voca = new Voca();
-                voca.eng = tempArr[0];
-                voca.kor = tempArr[1];
-                vocaArr.add(voca);
-            }
 
-            br.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), "파일 없음", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
-    }
-
-    public void visibilliyWidget(String flag){
-        if(flag.equals("visible")){
+    public void visibilliyWidget(String flag) {
+        if (flag.equals("visible")) {
             etKor.setVisibility(View.VISIBLE);
             submitBtn.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             etKor.setVisibility(View.INVISIBLE);
             submitBtn.setVisibility(View.INVISIBLE);
         }
+    }
+
+    public String isKorean(String str) {
+        if (str.matches("^[가-힣ㄱ-ㅎㅏ-ㅣ]*$")) {
+            return "kor";
+        }
+        return "";
     }
 }

@@ -29,8 +29,6 @@ public class VocaAddActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vocaadd);
 
-        is_through = true;
-
         vocalist = getLayoutInflater().inflate(R.layout.vocalist, null, false);
         tv = (TextView) vocalist.findViewById(R.id.tv);
         btnAdd = (Button) findViewById(R.id.btnAdd);
@@ -62,8 +60,19 @@ public class VocaAddActivity extends Activity {
 
                 voca.eng = String.valueOf(etAddEng.getText());
                 voca.kor = String.valueOf(etAddKor.getText());
-                vocaArr.add(voca);
-                Toast.makeText(getApplicationContext(), "단어가 추가 되었습니다.", Toast.LENGTH_SHORT).show();
+                if (!whatLanguage(voca.eng).equals("eng")) {
+                    Toast.makeText(getApplicationContext(), "영어단어 란에는 영어 소문자를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    etAddEng.setText("");
+                }
+                if (!whatLanguage(voca.kor).equals("kor")) {
+                    Toast.makeText(getApplicationContext(), "단어 뜻 란에는 한국어를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    etAddKor.setText("");
+                }
+                if (whatLanguage(voca.eng).equals("eng") && whatLanguage(voca.kor).equals("kor")) {
+                    vocaArr.add(voca);
+                    Toast.makeText(getApplicationContext(), "단어가 추가 되었습니다.", Toast.LENGTH_SHORT).show();
+                    etAddEng.setText("");
+                    etAddKor.setText("");
 
 //                for (int i = 0; i < vocaArr.size(); i++) {
 //                    if (vocaArr.get(i).eng.equals(voca.eng)) {
@@ -74,56 +83,39 @@ public class VocaAddActivity extends Activity {
 //                        Toast.makeText(getApplicationContext(),"이미 있는 단어입니다.",Toast.LENGTH_SHORT).show();
 //                    }
 //                }
-                save();
-                tv.setText("");
-                showVoca();
+                    save();
+                    tv.setText("");
+                    is_through = true;
+                    showVoca();
+                }
             }
         });
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mwv.setVisibility(View.VISIBLE);
-                mwv.loadUrl(goUrl(etAddEng.getText().toString()));
+                if (!whatLanguage(etAddEng.getText().toString()).equals("eng")) {
+                    Toast.makeText(getApplicationContext(), "영어단어 란에는 영어 소문자를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    etAddEng.setText("");
+                }
+                if (whatLanguage(etAddEng.getText().toString()).equals("eng")) {
+                    mwv.setVisibility(View.VISIBLE);
+                    mwv.loadUrl(goUrl(etAddEng.getText().toString()));
+                    etAddEng.setText("");
+                    etAddKor.setText("");
+                }
             }
         });
-    }
-
-    public void load() {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(getFilesDir() + "/voca.txt"));
-            while (true) {
-                String line = br.readLine();
-                if (line == null) {
-                    break;
-                }
-                String[] tempArr = line.split(",");
-                Voca voca = new Voca();
-                voca.eng = tempArr[0];
-                voca.kor = tempArr[1];
-                vocaArr.add(voca);
-            }
-
-            br.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), "파일 없음", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
     }
 
     public void save() {
         try {
             FileWriter fw = new FileWriter(getFilesDir() + "/voca.txt", false);
 
-
             for (int i = 0; i < vocaArr.size(); i++) {
                 Voca temp = vocaArr.get(i);
                 fw.write(temp.eng + "," + temp.kor + "\n");
             }
-
             fw.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -139,6 +131,17 @@ public class VocaAddActivity extends Activity {
 
     public String goUrl(String url) {
         return "https://m.search.naver.com/search.naver?query=" + url + "&where=m_ldic&sm=msv_hty";
+    }
+
+    public String whatLanguage(String str) {
+        if (str.matches("^[가-힣ㄱ-ㅎㅏ-ㅣ]*$")) {
+            return "kor";
+        } else if (str.matches("^[a-z]*$")) {
+            return "eng";
+        } else if (str.matches("^[0-9]]*$")) {
+            return "num";
+        }
+        return "";
     }
 
 }

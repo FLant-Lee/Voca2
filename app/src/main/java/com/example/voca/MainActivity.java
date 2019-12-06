@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     Menu menu;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button vocaAdd = (Button) findViewById(R.id.VocaAdd);
-        Button vocaList = (Button) findViewById(R.id.VocaFind);
+        final Button vocaList = (Button) findViewById(R.id.VocaFind);
         Button vocaTest = (Button) findViewById(R.id.VocaTest);
         Button vocaResult = (Button) findViewById(R.id.TestResult);
 
@@ -67,8 +66,12 @@ public class MainActivity extends AppCompatActivity {
         vocaTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), VocaTestActivity.class);
-                startActivity(intent);
+                if(VocaAddActivity.vocaArr.size() < 5) {
+                    Toast.makeText(getApplicationContext(),"단어가 최소 5개 이상이어야 합니다.",Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(getApplicationContext(), VocaTestActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -93,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu1:
                 Toast.makeText(this, "201558060 이상욱 201558118 이현우", Toast.LENGTH_SHORT).show();
                 return true;

@@ -20,6 +20,7 @@ import static com.example.voca.VocaAddActivity.vocaArr;
 
 public class VocaTestActivity extends Activity {
 
+
     private final static int NUMBER = 5;
     static int[] randArr = new int[NUMBER];
     Random rd = new Random();
@@ -28,7 +29,9 @@ public class VocaTestActivity extends Activity {
     EditText etKor;
     ImageView correctImg, incorrectImg;
     boolean is_right = false;
+    static int correctCnt = 0;
     int num;
+
     CountDownTimer countDownTimer;
 
     @Override
@@ -54,8 +57,8 @@ public class VocaTestActivity extends Activity {
         rd = new Random();
         for (int i = 0; i < randArr.length; i++) {
             randArr[i] = rd.nextInt(VocaAddActivity.vocaArr.size());
-            for(int j = 0; j< i; j++){
-                if(randArr[i] == randArr[j]){
+            for (int j = 0; j < i; j++) {
+                if (randArr[i] == randArr[j]) {
                     i--;
                 }
             }
@@ -91,18 +94,23 @@ public class VocaTestActivity extends Activity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //맞췄다면
-                if (etKor.getText().toString().equals(VocaAddActivity.vocaArr.get(randArr[0]).kor)) {
-                    is_right = true;
-                    checkAnswer(4);
-                    countDownTimer.cancel();
-                    Toast.makeText(getApplicationContext(), "정답입니다.", Toast.LENGTH_SHORT).show();
-                    visibilliyWidget("invisible");
-
+                if (!isKorean(etKor.getText().toString()).equals("kor")) {
+                    Toast.makeText(getApplicationContext(), "한국어를 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
-                //틀렸다면
-                else {
-                    Toast.makeText(getApplicationContext(), "틀렸습니다.", Toast.LENGTH_SHORT).show();
+                if (isKorean(etKor.getText().toString()).equals("kor")) {
+                    //맞췄다면
+                    if (etKor.getText().toString().equals(VocaAddActivity.vocaArr.get(randArr[0]).kor)) {
+                        is_right = true;
+                        checkAnswer(4);
+                        countDownTimer.cancel();
+                        Toast.makeText(getApplicationContext(), "정답입니다.", Toast.LENGTH_SHORT).show();
+                        visibilliyWidget("invisible");
+
+                    }
+                    //틀렸다면
+                    else {
+                        Toast.makeText(getApplicationContext(), "틀렸습니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -114,12 +122,13 @@ public class VocaTestActivity extends Activity {
     public void checkAnswer(int second) {
 
         if (is_right == true) {
-            MediaPlayer player = MediaPlayer.create(this,R.raw.correct);
+            MediaPlayer player = MediaPlayer.create(this, R.raw.correct);
             player.start();
             correctImg.setVisibility(View.VISIBLE);
+            correctCnt++;
 
         } else {
-            MediaPlayer player = MediaPlayer.create(this,R.raw.incorrect);
+            MediaPlayer player = MediaPlayer.create(this, R.raw.incorrect);
             player.start();
             incorrectImg.setVisibility(View.VISIBLE);
         }
@@ -152,16 +161,25 @@ public class VocaTestActivity extends Activity {
 //    rd.nextInt(VocaAddActivity.vocaArr.size());
 //        tvEng.setText((VocaAddActivity.vocaArr.get(num).eng));
 
-    public void numRand() {
-        for (int i = 0; i < NUMBER; i++) {
-            randArr[i] = rd.nextInt(VocaAddActivity.vocaArr.size());
-            for (int j = 0; j < i; j++) {
-                if (randArr[i] == randArr[j]) {
-                    i--;
-                }
-            }
-        }
-    }
+//    public void numRand() {
+//        for (int i = 0; i < NUMBER; i++) {
+//            randArr[i] = rd.nextInt(VocaAddActivity.vocaArr.size());
+//            for (int j = 0; j < i; j++) {
+//                if (randArr[i] == randArr[j]) {
+//                    i--;
+//                }
+//            }
+//        }
+//    }
+//    rd = new Random();
+//        for (int i = 0; i < randArr.length; i++) {
+//        randArr[i] = rd.nextInt(VocaAddActivity.vocaArr.size());
+//        for(int j = 0; j< i; j++){
+//            if(randArr[i] == randArr[j]){
+//                i--;
+//            }
+//        }
+//    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -198,5 +216,12 @@ public class VocaTestActivity extends Activity {
             etKor.setVisibility(View.INVISIBLE);
             submitBtn.setVisibility(View.INVISIBLE);
         }
+    }
+
+    public String isKorean(String str) {
+        if (str.matches("^[가-힣ㄱ-ㅎㅏ-ㅣ]*$")) {
+            return "kor";
+        }
+        return "";
     }
 }
