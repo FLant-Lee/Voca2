@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
 
@@ -31,6 +32,7 @@ public class VocaTestActivity extends Activity {
     boolean is_right = false;
     static int correctCnt = 0;
     int num;
+    Toast toast;
 
     CountDownTimer countDownTimer;
 
@@ -131,6 +133,8 @@ public class VocaTestActivity extends Activity {
             MediaPlayer player = MediaPlayer.create(this, R.raw.incorrect);
             player.start();
             incorrectImg.setVisibility(View.VISIBLE);
+            correctCnt++;
+
         }
         countDownTimer.cancel();
         CountDownTimer countDownTimer2 = new CountDownTimer(second * 1000, 1000) {

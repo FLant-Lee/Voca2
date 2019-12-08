@@ -1,5 +1,6 @@
 package com.example.voca;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
@@ -66,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
         vocaTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(VocaAddActivity.vocaArr.size() < 5) {
-                    Toast.makeText(getApplicationContext(),"단어가 최소 5개 이상이어야 합니다.",Toast.LENGTH_SHORT).show();
-                }else {
+                if (VocaAddActivity.vocaArr.size() < 5) {
+                    Toast.makeText(getApplicationContext(), "단어가 최소 5개 이상이어야 합니다.", Toast.LENGTH_SHORT).show();
+                } else {
                     Intent intent = new Intent(getApplicationContext(), VocaTestActivity.class);
                     startActivity(intent);
                 }
@@ -100,10 +101,26 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu1:
                 Toast.makeText(this, "201558060 이상욱 201558118 이현우", Toast.LENGTH_SHORT).show();
                 return true;
+
             case R.id.menu2:
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setMessage("정말로 종료하시겠습니까?");
-                builder.setTitle("종료 알림창")
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                builder1.setMessage("1. 단어장 추가 (원하는 단어 검색 및 자신만의 단어장의 단어 추가 가능\n" + "2. 단어장 보기 (현재까지 저장한 단어 리스트를 볼 수 있습니다.\n" + "3. 단어 시험 (추가한 단어들로 랜덤으로 나오는 단어 시험을 볼 수있습니다.)\n" +
+                        "4.시험 결과(현재까지 본 단어 시험의 결과를 조회 할 수 있는 기능 입니다.)\n");
+                builder1.setTitle("앱 사용 설명서").setCancelable(false).setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert1 = builder1.create();
+                alert1.setTitle("앱 사용 설명서");
+                alert1.show();
+                break;
+
+            case R.id.menu3:
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this);
+                builder2.setMessage("정말로 종료하시겠습니까?");
+                builder2.setTitle("종료 알림창")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
@@ -117,9 +134,9 @@ public class MainActivity extends AppCompatActivity {
                                 dialog.cancel();
                             }
                         });
-                AlertDialog alert = builder.create();
-                alert.setTitle("종료 알림창");
-                alert.show();
+                AlertDialog alert2 = builder2.create();
+                alert2.setTitle("종료 알림창");
+                alert2.show();
         }
         return super.onOptionsItemSelected(item);
     }

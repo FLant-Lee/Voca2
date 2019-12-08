@@ -81,7 +81,6 @@
                         android:background="@drawable/button"
                         android:layout_weight="1"
                 ></Button>
-
             </LinearLayout>
 
 
@@ -91,7 +90,6 @@
 
                 android:gravity="center"
         >
-
             <FrameLayout
                     android:layout_gravity="center"
             >
