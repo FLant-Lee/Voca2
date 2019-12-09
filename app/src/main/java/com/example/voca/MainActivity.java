@@ -98,13 +98,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) { // 옵션 메뉴를 구현 하는 부분
         switch (item.getItemId()) {
-            case R.id.menu1:
+            case R.id.menu1: //토스트메세지로 개발자 정보 출력
                 Toast.makeText(this, "201558060 이상욱 201558118 이현우", Toast.LENGTH_SHORT).show();
                 return true;
 
-            case R.id.menu2:
+            case R.id.menu2: //앱 설명 과정을 다이얼로그 메세지 방식으로 출력
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
                 builder1.setMessage("1. 단어장 추가 (원하는 단어 검색 및 자신만의 단어장의 단어 추가 가능\n" + "2. 단어장 보기 (현재까지 저장한 단어 리스트를 볼 수 있습니다.\n" + "3. 단어 시험 (추가한 단어들로 랜덤으로 나오는 단어 시험을 볼 수있습니다.)\n" +
                         "4.시험 결과(현재까지 본 단어 시험의 결과를 조회 할 수 있는 기능 입니다.)\n"+"5. 메뉴에서 단어 10개 넣기를 선택하시면 자동으로 단어 10개가 추가 됩니다.\n");
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"추가 되었습니다.",Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.menu4:
+            case R.id.menu4: //다이얼로그 창을 이용한 앱을 종료 하는 기능 구현
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this);
                 builder2.setMessage("정말로 종료하시겠습니까?");
                 builder2.setTitle("종료 알림창")

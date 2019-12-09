@@ -124,14 +124,14 @@ public class VocaTestActivity extends Activity {
     public void checkAnswer(int second) {
 
         if (is_right == true) {
-            MediaPlayer player = MediaPlayer.create(this, R.raw.correct);
-            player.start();
+            MediaPlayer player = MediaPlayer.create(this, R.raw.correct); // 미디어 플레이어 기능을 이용한 사운드 출력 raw 폴더 아래에 있는 사운드 출력
+            player.start(); // 사운드 스타트
             correctImg.setVisibility(View.VISIBLE);
             correctCnt++;
 
         } else {
-            MediaPlayer player = MediaPlayer.create(this, R.raw.incorrect);
-            player.start();
+            MediaPlayer player = MediaPlayer.create(this, R.raw.incorrect); // 미디어 플레이어 기능을 이용한 사운드 출력 raw 폴더 아래에 있는 사운드 출력
+            player.start(); // 사운드 스타트
             incorrectImg.setVisibility(View.VISIBLE);
             correctCnt++;
 
@@ -147,7 +147,7 @@ public class VocaTestActivity extends Activity {
                 Intent intent = new Intent(getApplicationContext(), SecondTestActivity.class);
                 startActivity(intent);
 
-                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout); //애니메이션 기능 xml 이용
 
                 Toast.makeText(getApplicationContext(), "다음으로", Toast.LENGTH_SHORT).show();
                 visibilliyWidget("visible");
