@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu2:
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
                 builder1.setMessage("1. 단어장 추가 (원하는 단어 검색 및 자신만의 단어장의 단어 추가 가능\n" + "2. 단어장 보기 (현재까지 저장한 단어 리스트를 볼 수 있습니다.\n" + "3. 단어 시험 (추가한 단어들로 랜덤으로 나오는 단어 시험을 볼 수있습니다.)\n" +
-                        "4.시험 결과(현재까지 본 단어 시험의 결과를 조회 할 수 있는 기능 입니다.)\n");
+                        "4.시험 결과(현재까지 본 단어 시험의 결과를 조회 할 수 있는 기능 입니다.)\n"+"5. 메뉴에서 단어 10개 넣기를 선택하시면 자동으로 단어 10개가 추가 됩니다.\n");
                 builder1.setTitle("앱 사용 설명서").setCancelable(false).setNegativeButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
