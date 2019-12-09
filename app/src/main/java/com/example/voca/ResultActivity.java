@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
-
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,13 +13,13 @@ import java.util.Calendar;
 
 public class ResultActivity extends Activity {
 
-    ArrayList<Result> resultArr = new ArrayList<>();
-    private Spinner spinner2;
-    ArrayList<String> arrayList;
-    ArrayAdapter<String> arrayAdapter;
-    TextView tvResult;
+    ArrayList<Result> resultArr = new ArrayList<>();    //결과 맞춘갯수와 날짜를 담을 동적배열
+    private Spinner spinner2;                           // 날짜별 분리를 위한 스피너
+    ArrayList<String> arrayList;                        // 스피너에 사용되는 동적배열1
+    ArrayAdapter<String> arrayAdapter;                  // 스피너에 사용되는 동적배열2
+    TextView tvResult;                                  // 맞춘개수와 데이트를 보여주는 텍스트 필드
     boolean show_first = false;
-    Button homeBtn;
+    Button homeBtn;                                     // 홈 버튼
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +30,7 @@ public class ResultActivity extends Activity {
         tvResult = (TextView) findViewById(R.id.tvResult);
         homeBtn = (Button) findViewById(R.id.homeBtn);
 
+        //자바 Calendar클래스로 현재시간을 구함
         SimpleDateFormat format = new SimpleDateFormat("yyyy년MM월dd일/HH시mm분ss초");
         Calendar time = Calendar.getInstance();
         String format_time = format.format(time.getTime());
@@ -74,6 +74,7 @@ public class ResultActivity extends Activity {
             }
         });
 
+        //홈버튼을 눌렀을때 발생하는 이벤트 처리
         homeBtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -127,11 +128,5 @@ public class ResultActivity extends Activity {
             e.printStackTrace();
         }
     }
-//
-//    private void showVoca() {
-//        for (int i = 0; i < resultArr.size(); i++) {
-//            tvResult.append((i + 1) + ". " + resultArr.get(i).correctNum + "  : " + resultArr.get(i).date + "\n");
-//        }
-//    }
 }
 

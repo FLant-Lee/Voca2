@@ -7,20 +7,12 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.*;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Locale;
 import java.util.Random;
 
-import static com.example.voca.VocaAddActivity.is_through;
-import static com.example.voca.VocaAddActivity.vocaArr;
-
 public class ThirdTestActivity extends Activity {
 
-    Button backbtn3, submitBtn;
+    Button submitBtn;
     TextView Timeset, tvEng;
     ImageView correctImg, incorrectImg;
 
@@ -36,7 +28,6 @@ public class ThirdTestActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vocatest);
 
-        backbtn3 = (Button) findViewById(R.id.backbtn3);
         submitBtn = (Button) findViewById(R.id.submitBtn);
         tvEng = (TextView) findViewById(R.id.tvEng);
         etKor = (EditText) findViewById(R.id.etKor);
@@ -49,14 +40,6 @@ public class ThirdTestActivity extends Activity {
         rd = new Random();
         num = rd.nextInt(VocaAddActivity.vocaArr.size());
         tvEng.setText((VocaAddActivity.vocaArr.get(VocaTestActivity.randArr[2]).eng));
-
-        backbtn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
 
         //남은 시간 : OO초
         countDownTimer = new CountDownTimer(10000, 1000) {
@@ -133,9 +116,6 @@ public class ThirdTestActivity extends Activity {
         }.start();
 
     }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     public void visibilliyWidget(String flag) {
         if (flag.equals("visible")) {

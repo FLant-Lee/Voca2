@@ -1,6 +1,5 @@
 package com.example.voca;
 
-import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
@@ -11,43 +10,28 @@ import android.widget.*;
 import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.FileWriter;
 import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
 
-
-    public View vocalist;
-    public TextView tv;
-    Menu menu;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 1. 단어장 추가 버튼
+        // 2. 단어장 보기 버튼
+        // 3. 단어 시험 버튼
+        // 4. 시험 결과
         Button vocaAdd = (Button) findViewById(R.id.VocaAdd);
-        final Button vocaList = (Button) findViewById(R.id.VocaFind);
+        Button vocaList = (Button) findViewById(R.id.VocaFind);
         Button vocaTest = (Button) findViewById(R.id.VocaTest);
         Button vocaResult = (Button) findViewById(R.id.TestResult);
 
-//        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-//
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                VocaAddActivity.vocaNum = position;
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
 
+        // 1. 단어장 추가 버튼을 누르면 VocaAddActivity로 이동
         vocaAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        // 2. 단어장 보기 버튼 누르면 VocaListActivity로 이동
         vocaList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 3. 단어 시험 버튼 누르면 VocaTestActivity로 이동
         vocaTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        // 4. 시험 결과 누르면 ResultActivity로 이동
         vocaResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,17 +104,18 @@ public class MainActivity extends AppCompatActivity {
                 alert1.show();
                 break;
 
+                // 10개의 데이터값을 voca.txt 파일에 저장을 위한 경우
             case R.id.menu3:
 
                 String[] inputEng = {"computer", "apple", "coffee", "ant", "cafe", "number", "library", "school", "teacher", "student"};
                 String[] inputKor = {"컴퓨터", "사과", "커피", "개미", "카페", "숫자", "도서관", "학교", "선생님", "학생"};
-                for(int i = 0 ; i<inputEng.length; i++){
+                for (int i = 0; i < inputEng.length; i++) {
                     Voca voca = new Voca();
                     voca.eng = inputEng[i];
                     voca.kor = inputKor[i];
                     VocaAddActivity.vocaArr.add(voca);
                 }
-
+                // FileWriter로 동적배열 값에 있는 것을 Voca객체로 반환한 값을 ','로 분리하여 voca.txt에 한줄 한줄 담습니다.
                 try {
                     FileWriter fw = new FileWriter(getFilesDir() + "/voca.txt", false);
 
@@ -142,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                Toast.makeText(getApplicationContext(),"추가 되었습니다.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "추가 되었습니다.", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.menu4:

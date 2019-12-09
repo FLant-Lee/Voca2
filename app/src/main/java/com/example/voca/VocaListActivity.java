@@ -15,21 +15,19 @@ import static com.example.voca.VocaAddActivity.*;
 public class VocaListActivity extends Activity {
 
 
-    TextView tv;
-
-    Button btnAllRemove;
-
-    Button btnDelete;
-    EditText etDelteNum;
-
-    Button btnUpdate;
-    EditText etUpdateNum, etUpdateEng, etUpdateKor;
+    TextView tv;                    // load된 vocaArr의 값이 showVoca메서드를 통해 전달된다.
+    Button btnAllRemove;            // 전체삭제 버튼
+    Button btnDelete;               // index값을 입력받아 삭제하는 버튼
+    EditText etDelteNum;            // 몇번째 것을 삭제할지 넣는 칸
+    Button btnUpdate;               // 업데이트 버튼
+    EditText etUpdateNum, etUpdateEng, etUpdateKor; //업데이트할 인덱스값, 업데이트할 영단어, 업데이트할 단어뜻
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vocalist);
 
+        // load될 텍스트 뷰
         tv = (TextView) findViewById(R.id.tv);
 
         btnDelete = (Button) findViewById(R.id.btnDelete);
@@ -41,20 +39,21 @@ public class VocaListActivity extends Activity {
         etUpdateEng = (EditText) findViewById(R.id.etUpdateEng);
         etUpdateKor = (EditText) findViewById(R.id.etUpdateKor);
 
-        if (!is_through == true) {
-            load();
+
+        if (!is_through == true) {      // 다른 Activity에서 로드가 된적이 있다면 또 로드 할필요가 없음
+            load();                     //vocaArr로 로드해야 vocaShow등 모든게 가능
             is_through = true;
         }
-        tv.setText("");
-        showVoca();
+        tv.setText("");                 //tv 내용 없엠
+        showVoca();                     //  vocaArr에 있는 내용 tv에 출력
+
 
 
         btnAllRemove.setOnClickListener(new View.OnClickListener() {
             //빈내용으로 txt를 덮어 써버리고
-            //컬레션과 텍스트필드를 비워줌
+            //컬레션vocaArr과 텍스트필드를 비워줌
             @Override
             public void onClick(View v) {
-
                 try {
                     BufferedWriter bw = new BufferedWriter(new FileWriter(getFilesDir() + "/voca.txt", false));
                     bw.close();
@@ -68,6 +67,7 @@ public class VocaListActivity extends Activity {
             }
         });
 
+        //삭제할 인덱스값을 받아 삭제하고 세이브하고 tv에 있는내용을 다 지우고(덮어쓰기 방식이므로) 다시 tv에 vocaArr에 있는 내용을 뿌려줌
         btnDelete.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -86,6 +86,8 @@ public class VocaListActivity extends Activity {
 
             }
         });
+
+        //삭제할 인덱스값을 받아 업데이트 세이브하고 tv에 있는내용을 다 지우고(덮어쓰기 방식이므로) 다시 tv에 vocaArr에 있는 내용을 뿌려줌
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +145,8 @@ public class VocaListActivity extends Activity {
         }
     }
 
+
+    //덮어쓰기 방식 FileWriter
     public void save() {
         try {
             FileWriter fw = new FileWriter(getFilesDir() + "/voca.txt", false);

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.*;
-
 import java.util.Locale;
 import java.util.Random;
 
