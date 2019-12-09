@@ -135,8 +135,6 @@ public class VocaTestActivity extends Activity {
         if (is_right == true) {
             MediaPlayer player = MediaPlayer.create(this, R.raw.correct); // 미디어 플레이어 기능을 이용한 사운드 출력 raw 폴더 아래에 있는 사운드 출력
             player.start(); // 사운드 스타트
-            MediaPlayer player = MediaPlayer.create(this, R.raw.correct);
-            player.start();
             // 정답 이미지가 보여짐
             correctImg.setVisibility(View.VISIBLE);
             correctCnt++;
