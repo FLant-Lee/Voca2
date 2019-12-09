@@ -12,6 +12,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     public View vocalist;
     public TextView tv;
     Menu menu;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +120,32 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.menu3:
+
+                String[] inputEng = {"computer", "apple", "coffee", "ant", "cafe", "number", "library", "school", "teacher", "student"};
+                String[] inputKor = {"컴퓨터", "사과", "커피", "개미", "카페", "숫자", "도서관", "학교", "선생님", "학생"};
+                for(int i = 0 ; i<inputEng.length; i++){
+                    Voca voca = new Voca();
+                    voca.eng = inputEng[i];
+                    voca.kor = inputKor[i];
+                    VocaAddActivity.vocaArr.add(voca);
+                }
+
+                try {
+                    FileWriter fw = new FileWriter(getFilesDir() + "/voca.txt", false);
+
+                    for (int i = 0; i < VocaAddActivity.vocaArr.size(); i++) {
+                        Voca temp = VocaAddActivity.vocaArr.get(i);
+                        fw.write(temp.eng + "," + temp.kor + "\n");
+                    }
+                    fw.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                Toast.makeText(getApplicationContext(),"추가 되었습니다.",Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.menu4:
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this);
                 builder2.setMessage("정말로 종료하시겠습니까?");
                 builder2.setTitle("종료 알림창")

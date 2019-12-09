@@ -9,6 +9,9 @@
             android:title="앱 정보"/>
     <item
             android:id="@+id/menu3"
+            android:title="단어 10개 넣기"/>
+    <item
+            android:id="@+id/menu4"
             android:title="앱 종료"/>
 
 

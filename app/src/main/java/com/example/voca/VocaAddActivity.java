@@ -76,7 +76,7 @@ public class VocaAddActivity extends Activity {
 
 //                for (int i = 0; i < vocaArr.size(); i++) {
 //                    if (vocaArr.get(i).eng.equals(voca.eng)) {
-//                        voca = null;
+//                        voca = n ull;
 //                        Toast.makeText(getApplicationContext(),"이미 있는 단어입니다.",Toast.LENGTH_SHORT).show();
 //                    } else {
 //                        vocaArr.add(voca);
